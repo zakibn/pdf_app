@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/pdf_controller.dart';
-import 'pdf_view_screen.dart';
+import '../widget/custom_list_view.dart';
 
 class PdfListScreen extends GetView<PdfController> {
   const PdfListScreen({super.key});
@@ -10,24 +10,21 @@ class PdfListScreen extends GetView<PdfController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('PDF Library')),
-      body: ListView.builder(
-        itemCount: controller.pdfs.length,
-        itemBuilder: (context, index) {
-          final pdf = controller.pdfs[index];
-
-          return ListTile(
-            leading: const Icon(Icons.picture_as_pdf),
-            title: Text(pdf.title),
-            subtitle: Text(pdf.singer),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              controller.openPdf(pdf);
-              Get.to(() => const PdfViewScreen());
-            },
-          );
-        },
+      backgroundColor: const Color(0xFFF1F7F8),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFF1F7F8),
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          'List PDF',
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
+          ),
+        ),
       ),
+      body: const CustomListView(),
     );
   }
 }
